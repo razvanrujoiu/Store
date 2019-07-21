@@ -9,7 +9,7 @@ public class Product {
 
     @Column(name = "PRODUCT_ID")
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer productId;
 
     @Column(name = "PRODUCT_NAME")
@@ -45,6 +45,13 @@ public class Product {
 
     public Integer getProductId() {
         return productId;
+    }
+
+    public Product getProductByName(String productName) {
+        if (this.productName.equals(productName)) {
+            return this;
+        }
+        return null;
     }
 
     public void setProductId(Integer productId) {

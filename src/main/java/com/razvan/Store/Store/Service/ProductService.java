@@ -1,7 +1,20 @@
 package com.razvan.Store.Store.Service;
 
 import com.razvan.Store.Store.Model.Product;
-import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProductService extends JpaRepository<Product, Integer> {
+import java.util.List;
+
+public interface ProductService {
+
+    List<Product> listAllProducts();
+
+    Product getProductById(Integer id);
+
+    Product getProductByName(String name);
+
+    List<Product> getProductsByColor(String color);
+
+    Product saveProduct(Product product);
+
+    void deleteProduct(Integer id);
 }
