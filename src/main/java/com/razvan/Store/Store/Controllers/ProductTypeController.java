@@ -22,30 +22,33 @@ public class ProductTypeController {
         return productTypeRepository.findById(id).get();
     }
 
-
-//
-//    @RequestMapping(value = "/productType", method = RequestMethod.PUT)
-//    ProductType productType(@RequestBody ProductType productType) {
-//        ProductType updatedProductType = productTypeRepository.save(productType);
-//        return updatedProductType;
-//    }
-
-//    @RequestMapping(value = "/productType", method = RequestMethod.DELETE)
-//    Map deleteProductType(@RequestParam Integer id) {
-//        productTypeRepository.delete(id);
-//
-//    }
-//
-//    @RequestMapping(valie = "")
-
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     List<ProductType> getAllProductTypes() {
         return productTypeRepository.findAll();
     }
 
-//    @RequestMapping(value = "/productTypes", method = RequestMethod.POST)
-//    String addAllProductTypes(@RequestBody List<ProductType> productTypeList) {
-//        productTypeService.save(productTypeList);
-//        return "SUCCESS";
-//    }
+    @RequestMapping(value = "/addProductType", method = RequestMethod.POST)
+    String addProductType(@RequestBody ProductType productType) {
+        ProductType savedProductType = productTypeRepository.save(productType);
+        return "SUCCESS";
+    }
+
+
+    @RequestMapping(value = "/updateProductType", method = RequestMethod.PUT)
+    ProductType productType(@RequestBody ProductType productType) {
+        ProductType updatedProductType = productTypeRepository.save(productType);
+        return updatedProductType;
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    String deleteProductType(@PathVariable Integer id) {
+        productTypeRepository.deleteById(id);
+        return "SUCCESS";
+    }
+
+
+
+
+
+
 }

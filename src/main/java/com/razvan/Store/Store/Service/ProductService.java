@@ -14,6 +14,12 @@ public interface ProductService {
 
     List<Product> getProductsByColor(String color);
 
+    List<Product> getProductsByIsAvailable(boolean isAvailable);
+
+    List<Product> getProductsByProductType(Integer productType);
+
+    List<Product> getProductsByProductPrice(Double price);
+
     Product saveProduct(Product product);
 
     void deleteProduct(Integer id);

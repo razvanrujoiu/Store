@@ -39,14 +39,27 @@ public class ProductServiceImpl implements ProductService {
         return this.productRepository.findByColor(color);
     }
 
+    public List<Product> getProductsByIsAvailable(boolean isAvailable) {
+        return this.productRepository.findByIsAvailable(isAvailable);
+    }
+
+    public List<Product> getProductsByProductType(Integer productType) {
+        return this.productRepository.findByProductType(productType);
+    }
+
+    public List<Product> getProductsByProductPrice(Double price) {
+        return this.productRepository.findByProductPrice(price);
+    }
+
+
     @Override
     public Product saveProduct(Product product) {
-        return null;
+        return this.productRepository.save(product);
     }
 
     @Override
     public void deleteProduct(Integer id) {
-
+        this.productRepository.deleteById(id);
     }
 
 

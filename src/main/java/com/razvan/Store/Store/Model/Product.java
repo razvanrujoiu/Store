@@ -9,14 +9,14 @@ public class Product {
 
     @Column(name = "PRODUCT_ID")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+   // @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer productId;
 
     @Column(name = "PRODUCT_NAME")
     String productName;
 
     @Column(name = "PRODUCT_PRICE")
-    String productPrice;
+    Double productPrice;
 
     @Column(name = "COLOR")
     String color;
@@ -33,7 +33,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(Integer productId, String productName, String productPrice, String color, boolean isAvailable, Date expirationDate, Integer productType) {
+    public Product(Integer productId, String productName, Double productPrice, String color, boolean isAvailable, Date expirationDate, Integer productType) {
         this.productId = productId;
         this.productName = productName;
         this.productPrice = productPrice;
@@ -66,11 +66,11 @@ public class Product {
         this.productName = productName;
     }
 
-    public String getProductPrice() {
+    public Double getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(String productPrice) {
+    public void setProductPrice(Double productPrice) {
         this.productPrice = productPrice;
     }
 

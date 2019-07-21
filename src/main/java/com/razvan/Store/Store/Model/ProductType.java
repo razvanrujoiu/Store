@@ -8,7 +8,7 @@ public class ProductType {
 
     @Column(name = "PRODUCT_TYPE_ID")
     @Id
-    @GeneratedValue
+   // @GeneratedValue
     Integer productTypeId;
 
     @Column(name = "PRODUCT_TYPE_NAME")

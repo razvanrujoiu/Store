@@ -36,28 +36,32 @@ public class ProductController {
         return productService.getProductsByColor(color);
     }
 
-//    @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
-//    @ResponseBody
-//    public Product getAvailableProducts(
-//            @PathVariable Integer id,
-//            @RequestParam(value = "isAvailable") boolean isAvailable) {
-//        return productService.getProductById(id);
-//    }
+    @RequestMapping(value = "/available", method = RequestMethod.GET)
+    @ResponseBody List<Product> getProductsByAvailability(@RequestParam(value = "isAvailable") boolean isAvailable) {
+        return productService.getProductsByIsAvailable(isAvailable);
+    }
 
+    @RequestMapping(value = "/productType", method = RequestMethod.GET)
+    @ResponseBody List<Product> getProductsByProductType(@RequestParam(value = "productType") Integer productType) {
+        return productService.getProductsByProductType(productType);
+    }
 
+    @RequestMapping(value = "/price", method = RequestMethod.GET)
+    @ResponseBody List<Product> getProductsByProductPrice(@RequestParam(value = "productPrice") Double productPrice) {
+        return productService.getProductsByProductPrice(productPrice);
+    }
 
+    @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
+    String addProduct(@RequestBody Product product) {
+        Product savedProduct = productService.saveProduct(product);
+        return "SUCCESS";
+    }
 
-//    @RequestMapping(value = "/product", method = RequestMethod.POST)
-//    String addProduct(@RequestBody Product product) {
-//        Product savedProduct = productService.save(product);
-//        return "SUCCESS";
-//    }
-
-//    @RequestMapping(value = "/product", method = RequestMethod.PUT)
-//    Product updateProduct(@RequestBody Product product) {
-//        Product updatedProduct = productService.save(product);
-//        return updatedProduct;
-//    }
+    @RequestMapping(value = "/updateProduct", method = RequestMethod.PUT)
+    Product updateProduct(@RequestBody Product product) {
+        Product updatedProduct = productService.saveProduct(product);
+        return updatedProduct;
+    }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     List<Product> getAllProducts() {
@@ -65,11 +69,11 @@ public class ProductController {
     }
 
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    String deleteProduct(@PathVariable Integer id) {
+        productService.deleteProduct(id);
+        return  "SUCCESS";
+    }
 
-//    @RequestMapping(value = "/products", method = RequestMethod.DELETE)
-//    String deleteAllEmpoyyes() {
-//        productService.deleteAll();
-//        return "SUCCES";
-//    }
 
 }
